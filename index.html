@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PC Parts Shop</title>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+  <script src="store.js"></script>
+
+  <!-- HEADER -->
+  <header class="header">
+    <h1 class="site-title">1 Stop Shop for PC Parts</h1>
+  
+    <div class="header-right">
+	  <div id="mini-cart" class="mini-cart">
+        🛒 <span id="mini-cart-count">0</span>
+      </div>
+	         
+	  <button id="open-cart" class="open-cart">Cart</button>
+	</div>
+  </header>
+
+  <!-- REQUIRED HIDDEN CATEGORY CHECKBOXES -->
+  <input type="checkbox" id="kb-checkbox" hidden>
+  <input type="checkbox" id="mouse-checkbox" hidden>
+  <input type="checkbox" id="speakers-checkbox" hidden>
+  <input type="checkbox" id="headphones-checkbox" hidden>
+  <input type="checkbox" id="webcams-checkbox" hidden>
+  <input type="checkbox" id="monitors-checkbox" hidden>
+
+  <input type="checkbox" id="hdd-checkbox" hidden>
+  <input type="checkbox" id="inthdd-checkbox" hidden>
+  <input type="checkbox" id="xhdd-checkbox" hidden>
+  <input type="checkbox" id="xssd-checkbox" hidden>
+
+  <input type="checkbox" id="ram-checkbox" hidden>
+  <input type="checkbox" id="gpu-checkbox" hidden>
+  <input type="checkbox" id="cpu-checkbox" hidden>
+  <input type="checkbox" id="motherboard-checkbox" hidden>
+  <input type="checkbox" id="psu-checkbox" hidden>
+  <input type="checkbox" id="nic-checkbox" hidden>
+  <input type="checkbox" id="cases-checkbox" hidden>
+
+  <!-- MAIN LAYOUT -->
+  <div class="layout-container">
+  
+    <!-- SIDEBAR FILTERS -->
+	<aside class="sidebar">
+	
+	  <!-- SEARCH BAR -->
+	  <div class="filter-section">
+	    <h3>Search</h3>
+		<input type="text" id="search-input" placeholder="Search products...">
+	  </div>
+	  
+	  <!-- CATEGORY FILTERS -->
+	  <div class="filter-section categories">
+	    <h3>Categories</h3>
+		<label><input type="checkbox" id="kb-checkbox"> Keyboards</label>
+		<label><input type="checkbox" id="mouse-checkbox"> Mice</label>
+		<label><input type="checkbox" id="speakers-checkbox"> Speakers</label>
+		<label><input type="checkbox" id="headphones-checkbox"> Headphones</label>
+		<label><input type="checkbox" id="webcams-checkbox"> Webcams</label>
+		<label><input type="checkbox" id="monitors-checkbox"> Monitors</label>
+		<label><input type="checkbox" id="hdd-checkbox"> HDD</label>
+		<label><input type="checkbox" id="ssd-checkbox"> SSD</label>
+		<label><input type="checkbox" id="ram-checkbox"> RAM</label>
+		<label><input type="checkbox" id="gpu-checkbox"> GPU</label>
+		<label><input type="checkbox" id="cpu-checkbox"> CPU</label>
+		<label><input type="checkbox" id="motherboard-checkbox"> Motherboards</label>
+		<label><input type="checkbox" id="psu-checkbox"> Power Supplies</label>
+		<label><input type="checkbox" id="nic-checkbox"> Network Cards</label>
+		<label><input type="checkbox" id="cases-checkbox"> PC Cases</label>
+	  </div>
+	  
+	  <!-- TYPE FILTERS -->
+	  <div class="filter-section">
+	    <h3>Types</h3>
+		
+		<!-- GPU TYPES -->
+		<label><input type="checkbox" id="gpu-nvidia"> NVIDIA GPU</label>
+		<label><input type="checkbox" id="gpu-amd"> AMD GPU</label>
+		<label><input type="checkbox" id="gpu-intel"> Intel GPU</label>
+		<label><input type="checkbox" id="gpu-asus"> ASUS GPU</label>
+		<label><input type="checkbox" id="gpu-gigabyte"> GIGABYTE GPU</label>
+		
+		<!-- CPU TYPES -->
+		<label><input type="checkbox" id="cpu-amd"> AMD CPU Socket</label>
+		<label><input type="checkbox" id="cpu-intel"> Intel CPU Socket</label>
+		
+		<!-- RAM TYPES -->
+		<label><input type="checkbox" id="ram-ddr5"> DDR5 RAM</label>
+		<label><input type="checkbox" id="ram-ddr4"> DDR4 RAM</label>
+		
+		<!-- STORAGE TYPES -->
+		<label><input type="checkbox" id="xhdd-250gb"> 250GB External HDD</label>
+		<label><input type="checkbox" id="inthdd-250gb"> 250GB Internal HDD</label>
+		<label><input type="checkbox" id="xhdd-500gb"> 500GB External HDD</label>
+		<label><input type="checkbox" id="inthdd-500gb"> 500GB Internal HDD</label>
+		<label><input type="checkbox" id="xhdd-1tb"> 1TB External HDD</label>
+		<label><input type="checkbox" id="inthdd-1tb"> 1TB Internal HDD</label>
+		<label><input type="checkbox" id="xhdd-2tb"> 2TB External HDD</label>
+		<label><input type="checkbox" id="inthdd-2tb"> 2TB Internal HDD</label>
+		<label><input type="checkbox" id="xhdd-3tb"> 3TB External HDD</label>
+		<label><input type="checkbox" id="inthdd-3tb"> 3TB Internal HDD</label>
+		<label><input type="checkbox" id="xhdd-4tbplus"> 4TB+ External HDD</label>
+		<label><input type="checkbox" id="inthdd-4tbplus"> 4TB+ Internal HDD</label>
+		
+		<label><input type="checkbox" id="xssd-250gb"> 250GB External SSD</label>
+		<label><input type="checkbox" id="intssd-250gb"> 250GB Internal SSD</label>
+		<label><input type="checkbox" id="xssd-500gb"> 500GB External SSD</label>
+		<label><input type="checkbox" id="xssd-1tb"> 1TB  External SSD</label>
+		<label><input type="checkbox" id="xssd-2tb"> 2TB External SSD</label>
+		<label><input type="checkbox" id="xssd-4tbplus"> 4TB+ External SSD</label>
+				
+		<!-- MONITORS -->
+		<label><input type="checkbox" id="display-oled"> OLED Display</label>
+		<label><input type="checkbox" id="display-lcd"> LCD Display</label>
+		<label><input type="checkbox" id="display-led"> LED Display</label>
+		
+		<!-- POWER SUPPLIES -->
+		<label><input type="checkbox" id="<400-watts"> Sub 400 Watt PSU</label>
+		<label><input type="checkbox" id="401-500 watts"> 401-500 Watt PSU</label>
+		<label><input type="checkbox" id="501-600 watts"> 501-600 Watt PSU</label>
+		<label><input type="checkbox" id="601-700 watts"> 601-700 Watt PSU</label>
+		<label><input type="checkbox" id="701-800 watts"> 701-800 Watt PSU</label>
+		<label><input type="checkbox" id="801-900 watts"> 801-900 Watt PSU</label>
+		<label><input type="checkbox" id=">900 watts"> 900+ Watt PSU</label>
+				
+	  </div>
+	  
+	  <!-- BRAND FILTERS -->
+	  <div class="filter-section">
+	    <h3>Brands</h3>
+		
+		<label><input type="checkbox" class="brand-filter" value="Logitech"> Logitech</label>
+		<label><input type="checkbox" class="brand-filter" value="Razer"> Razer</label>
+		<label><input type="checkbox" class="brand-filter" value="Corsair"> Corsair</label>
+		<label><input type="checkbox" class="brand-filter" value="Ducky"> Ducky</label>
+		<label><input type="checkbox" class="brand-filter" value="SteelSeries"> SteelSeries</label>
+		<label><input type="checkbox" class="brand-filter" value="HyperX"> HyperX</label>
+		<label><input type="checkbox" class="brand-filter" value="Alienware"> Alienware</label>
+		<label><input type="checkbox" class="brand-filter" value="Seagate"> Seagate</label>
+		<label><input type="checkbox" class="brand-filter" value="SSK"> SSK</label>
+		<label><input type="checkbox" class="brand-filter" value="Western Digital"> Western Digital</label>
+		<label><input type="checkbox" class="brand-filter" value="UnionSine"> UnionSine</label>
+		<label><input type="checkbox" class="brand-filter" value="SANDISK"> SANDISK</label>
+		<label><input type="checkbox" class="brand-filter" value="Skullcandy"> Skullcandy</label>
+		<label><input type="checkbox" class="brand-filter" value="Bose"> Bose</label>
+		<label><input type="checkbox" class="brand-filter" value="Sony"> Sony</label>
+		<label><input type="checkbox" class="brand-filter" value="Sennheiser"> Sennheiser</label>
+		<label><input type="checkbox" class="brand-filter" value="Samsung"> Samsung</label>
+		<label><input type="checkbox" class="brand-filter" value="INNOCN"> INNOCN</label>
+		<label><input type="checkbox" class="brand-filter" value="Redragon"> Redragon</label>
+		<label><input type="checkbox" class="brand-filter" value="Crucial"> Crucial</label>
+		<label><input type="checkbox" class="brand-filter" value="G Skill"> G Skill</label>
+		<label><input type="checkbox" class="brand-filter" value="Kingston"> Kingston</label>
+		<label><input type="checkbox" class="brand-filter" value="Silicon Power"> Silicon Power</label>
+		<label><input type="checkbox" class="brand-filter" value="NVIDIA"> NVIDIA</label>
+		<label><input type="checkbox" class="brand-filter" value="AMD"> AMD</label>
+		<label><input type="checkbox" class="brand-filter" value="ASUS"> ASUS</label>
+		<label><input type="checkbox" class="brand-filter" value="Intel"> Intel</label>
+		<label><input type="checkbox" class="brand-filter" value="MSI"> MSI</label>
+		<label><input type="checkbox" class="brand-filter" value="GIGABYTE"> GIGABYTE</label>
+		<label><input type="checkbox" class="brand-filter" value="EVGA"> EVGA</label>
+		<label><input type="checkbox" class="brand-filter" value="ANSAITE"> ANSAITE</label>
+		
+	  </div>
+	  	  
+	  <!-- CLEAR ALL -->
+      <button id="clear-all" class="clear-all">✖️ Clear All Filters</button>
+	  
+	</aside>
+	
+	<!-- MAIN CONTENT COLUMN -->
+	<div class="main-content">
+	
+	  <!-- EMPTY STATE (Hero + Welcome + Search) -->
+	  <div id="empty-state" class="empty-state">
+	  
+	    <div class="hero-banner">
+		  <h1>Build Your Dream PC</h1>
+		  <p>Quality parts. Trusted brands. Fast shipping.</p>
+		</div>
+				
+		<div class="welcome-panel">
+		  <h2>Welcome to the Store</h2>
+		  <p>Select a category or use the search bar to begin</p>
+		</div>
+		
+	  </div>
+
+      <!-- CATEGORY CARDS -->
+      <div id="category-cards" class="category-cards">
+        <div class="category-card" data-category="kb"><h2>Keyboards</h2></div>
+        <div class="category-card" data-category="mouse"><h2>Mice</h2></div>
+        <div class="category-card" data-category="speakers"><h2>Speakers</h2></div>
+        <div class="category-card" data-category="headphones"><h2>Headphones</h2></div>
+        <div class="category-card" data-category="webcams"><h2>Webcams</h2></div>
+        <div class="category-card" data-category="monitors"><h2>Monitors</h2></div>
+        <div class="category-card" data-category="xhdd"><h2>External HDD</h2></div>
+		<div class="category-card" data-category="inthdd"><h2>Internal HDD</h2></div>
+        <div class="category-card" data-category="xssd"><h2>External SSD</h2></div>
+		<div class="category-card" data-category="intssd"><h2>Internal SSD</h2></div>
+        <div class="category-card" data-category="ram"><h2>Memory (RAM)</h2></div>
+        <div class="category-card" data-category="gpu"><h2>Graphics Cards</h2></div>
+        <div class="category-card" data-category="cpu"><h2>Processors (CPU)</h2></div>
+        <div class="category-card" data-category="motherboard"><h2>Motherboards</h2></div>
+        <div class="category-card" data-category="psu"><h2>Power Supplies</h2></div>
+        <div class="category-card" data-category="nic"><h2>Network Cards</h2></div>
+	    <div class="category-card" data-category="cases"><h2>PC Cases</h2></div>
+      
+	    <div class="disclaimer">
+	      <p>**Not an actual storefront. Made as a skill-building project.**</p>
+	    </div>
+		
+	  </div>
+	  
+      <!-- PRODUCT GRID -->
+      <div class="products-container">
+
+        <!-- Keyboards -->
+	    <div class="product-tile" 
+	         data-category="kb" 
+		     data-type="kb-mx"
+             data-brand="Logitech"		   
+		     data-name="MX Keys S" 
+		     data-price="119.99">
+	      <h3>Logitech MX Keys S</h3>
+		  <p>$119.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+	  
+	    <div class="product-tile" 
+	         data-category="kb" 
+		     data-type="kb-huntsman"
+             data-brand="Razer"		   
+		     data-name="Huntsman V3 Pro Tenkeyless US Counter-Strike 2 Edition"
+		     data-price="269.99">
+	      <h3>Razer Huntsman V3 Pro Tenkeyless US Counter-Strike 2 Edition</h3>
+		  <p>$269.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+	  
+	    <div class="product-tile" 
+	         data-category="kb" 
+		     data-type="kb-k55"
+             data-brand="Corsair"		   
+		     data-name="K55 RGB PRO Gaming Keyboard"
+		     data-price="69.99">
+	      <h3>Corsair K55 RGB PRO Gaming Keyboard</h3>
+		  <p>$69.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+	  
+	    <div class="product-tile" 
+	         data-category="kb" 
+		     data-type="kb-ducky-one-3"
+             data-brand="Ducky"		   
+		     data-name="DOOM Edition One 3 SF"
+		     data-price="139.99">
+	      <h3>Ducky DOOM Edition One 3 SF</h3>
+		  <p>$139.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+	  
+	    <div class="product-tile" 
+	         data-category="kb" 
+		     data-type="kb-k620"
+             data-brand="Logitech"		   
+		     data-name="Signature Slim Wired K620 for Business"
+		     data-price="28.49">
+	      <h3>Logitech Signature Slim Wired K620 for Business</h3>
+		  <p>$28.49</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+	  
+	    <div class="product-tile" 
+	         data-category="kb" 
+		     data-type="kb-k120"
+             data-brand="Logitech"		   
+		     data-name="K120 Wired Keyboard for Windows"
+		     data-price="9.79">
+	      <h3>Logitech K120 Wired Keyboard for Windows</h3>
+		  <p>$9.79</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+	  
+	    <!-- Mice -->
+	    <div class="product-tile" 
+	         data-category="mouse" 
+	         data-type="mice-m705"
+             data-brand="Logitech"		   
+		     data-name="M705 Marathon Wireless Mouse"
+		     data-price="34.99">
+	      <h3>Logitech M705 Marathon Wireless Mouse</h3>
+		  <p>$34.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+	  
+	    <div class="product-tile" 
+	         data-category="mouse" 
+		     data-type="mice-rival-5"
+             data-brand="SteelSeries"		   
+		     data-name="Rival 5 Gaming Mouse"
+		     data-price="55.99">
+	      <h3>SteelSeries Rival 5 Gaming Mouse</h3>
+		  <p>$55.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+	  
+	    <div class="product-tile" 
+	         data-category="mouse" 
+		     data-type="mice-pulsefire"
+             data-brand="HyperX"		   
+		     data-name="Pulsefire Haste 2"
+		     data-price="69.99">
+	      <h3>HyperX Pulsefire Haste 2</h3>
+		  <p>$69.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+	  
+	    <div class="product-tile" 
+	         data-category="mouse" 
+		     data-type="mice-aw610m"
+             data-brand="Alienware"		   
+		     data-name="Wired/Wireless Gaming Mouse AW610M"
+		     data-price="91.99">
+	      <h3>Alienware Wired/Wireless Gaming Mouse AW610M</h3>
+		  <p>$91.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+		
+		<div class="product-tile"
+		     data-category="mouse"
+			 data-type="mice-"
+			 data-brand="SteelSeries"
+			 data-name="Rival 650 Quantum Wireless Gaming Mouse"
+			 data-price="109.99">
+		  <h3>SteelSeries Rival 650 Quantum Wireless Gaming Mouse</h3>
+		  <p>$109.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+		</div>
+	  
+	    <!-- Speakers -->
+	    <div class="product-tile" 
+	         data-category="speakers" 
+		     data-type="speakers-z207"
+             data-brand="Logitech"		   
+		     data-name="Logitech Z207 2.0 Stereo Computer Speakers with Bluetooth"
+		     data-price="59.99">
+	      <h3>Logitech Z207 2.0 Stereo Computer Speakers with Bluetooth</h3>
+		  <p>$59.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+	  
+	    <div class="product-tile" 
+	         data-category="speakers" 
+		     data-type="speakers-companion-2"
+             data-brand="Bose"		   
+		     data-name="Companion 2 Series III Multimedia Speaker System (Black)"
+		     data-price="169.95">
+	      <h3>Bose Companion 2 Series III Multimedia Speaker System (Black)</h3>
+		  <p>$179.00</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+	  
+	    <div class="product-tile" 
+	         data-category="speakers" 
+		     data-type="speakers-leviathan-v2"
+             data-brand="Razer"		   
+		     data-name="Leviathan V2: Multi-Driver PC Gaming Soundbar"
+		     data-price="197.49">
+	      <h3>Razer Leviathan V2: Multi-Driver PC Gaming Soundbar</h3>
+		  <p>$197.49</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+		
+		<div class="product-tile"
+		     data-category="speakers"
+			 data-type="speakers-leviathan-nonmo"
+			 data-brand="Razer"
+			 data-name="Nonmo Custom Woven Fiberglass 3&quot; Drivers - 
+			            Full Range 2.0 PC Gaming Speakers"
+			 data-price="104.99">
+		  <h3>Razer Nonmo Custom Woven Fiberglass 3&quot; Drivers - 
+			  Full Range 2.0 PC Gaming Speakers</h3>
+		  <p>$104.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+		</div>
+	  
+	    <div class="product-tile" 
+	         data-category="speakers" 
+		     data-type="speakers-gs515"
+             data-brand="Redragon"		   
+		     data-name="Redragon GS515 RGB Desktop Soundbar"
+		     data-price="32.99">
+	      <h3>Redragon GS515 RGB Desktop Soundbar</h3>
+		  <p>$32.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+	  
+	    <!-- Headphones -->
+	    <div class="product-tile" 
+	         data-category="headphones" 
+		     data-type="headphones-560s"
+             data-brand="Sennheiser"		   
+		     data-name="HD 560S Open-Back Over-Ear Wired Headphones"
+		     data-price="179.99">
+	      <h3>Sennheiser HD 560S Open-Back Over-Ear Wired Headphones</h3>
+		  <p>$179.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+	  
+	    <div class="product-tile" 
+	         data-category="headphones" 
+		     data-type="headphones-anc-2"
+             data-brand="Skullcandy"		   
+		     data-name="Crusher ANC 2 Wireless Over-Ear Bluetooth Headphones"
+		     data-price="219.99">
+	      <h3>Skullcandy Crusher ANC 2 Wireless Over-Ear Bluetooth Headphones</h3>
+		  <p>$219.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+	  	  
+	    <div class="product-tile" 
+	         data-category="headphones" 
+		     data-type="headphones-ch720n"
+             data-brand="Sony"		   
+		     data-name="WH-CH720N Noise Canceling Wireless Headphones"
+		     data-price="80.00">
+	      <h3>Sony WH-CH720N Noise Canceling Wireless Headphones</h3>
+		  <p>$80.00</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+	  
+	    <!-- Webcams -->
+	    <div class="product-tile" 
+	         data-category="webcams" 
+	         data-type="webcams-brio"
+             data-brand="Logitech"		   
+	         data-name="MX Brio Ultra HD 4K Webcam"
+	         data-price="199.99">
+	      <h3>Logitech MX Brio Ultra HD 4K Webcam</h3>
+		  <p>$199.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+		
+		<div class="product-tile"
+		     data-category="webcams"
+			 data-type="webcams-kiyo"
+			 data-brand="Razer"
+			 data-name="Kiyo V2 X Streaming Webcam"
+			 data-price="74.99"
+			 data-image="images/kiyo-v2-x.jpg">
+		  <h3>Razer Kiyo V2 X Streaming Webcam</h3>
+		  <p>$74.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+		</div>
+	  
+	    <!-- Monitors -->
+	    <div class="product-tile" 
+	         data-category="monitors" 
+	         data-type="monitors-g55c"
+             data-brand="Samsung"
+             data-display="LED"			 
+	         data-name="32&quot; Odyssey G55C Series QHD 1000R Curved LED Gaming Monitor"
+	         data-price="189.99">
+	      <h3>32&quot; Odyssey G55C Series QHD 1000R Curved LED Gaming Monitor</h3>
+		  <p>$189.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+		
+		<div class="product-tile"
+		     data-category="monitors"
+			 data-type="monitors-wqhd"
+			 data-brand="Samsung"
+			 data-display="LED"
+			 data-name="34&quot; Odyssey G Series WQHD LED Gaming Monitor"
+			 data-price="389.90">
+		  <h3>34&quot; Odyssey G Series WQHD LED Gaming Monitor</h3>
+		  <p>$389.90</p>
+		  <button class="add-to-cart">Add to Cart</button>
+		</div>
+		
+		<div class="product-tile"
+		     data-category="monitors"
+			 data-type="monitors-g4"
+			 data-brand="Samsung"
+			 data-display="LED"
+			 data-name="27&quot; Odyssey G4 Series IPS LED Gaming Monitor"
+			 data-price="339.90">
+		  <h3>27&quot; Odyssey G4 Series IPS LED Gaming Monitor</h3>
+		  <p>$339.90</p>
+		  <button class="add-to-cart">Add to Cart</button>
+		</div>
+		
+		<div class="product-tile"
+		     data-category="monitors"
+			 data-type="monitors-wqhd"
+			 data-brand="INNOCN"
+			 data-display="LCD"
+			 data-name="34&quot; WQHD Ultrawide LCD Gaming Monitor"
+			 data-price="189.99">
+		  <h3>INNOCN 34&quot; WQHD Ultrawide LCD Gaming Monitor</h3>
+		  <p>$189.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+		</div>
+		
+		<div class="product-tile"
+		     data-category="monitors"
+			 data-type="monitors-s30gd"
+			 data-brand="Samsung"
+			 data-display="LCD"
+			 data-name="24&quot; S30GD Essential Monitor"
+			 data-price="79.99">
+		  <h3>Samsung 24&quot; S30GD Essential Monitor</h3>
+		  <p>$79.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+		</div>
+		
+		<div class="product-tile"
+		     data-category="monitors"
+			 data-type="monitors-g6"
+			 data-brand="Samsung"
+			 data-display="OLED"
+			 data-name="27&quot; Odyssey OLED G61SH Gaming Monitor"
+			 data-price="399.99">
+		  <h3>27&quot; Odyssey OLED G61SH Gaming Monitor</h3>
+		  <p>$399.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+		</div>
+		
+		<div class="product-tile"
+		     data-category="monitors"
+			 data-type="monitors-g5"
+			 data-brand="Samsung"
+			 data-display="OLED"
+			 data-name="27&quot; Odyssey OLED G50SF Gaming Monitor"
+			 data-price="339.95">
+		  <h3>27&quot; Odyssey OLED G50SF Gaming Monitor</h3>
+		  <p>$339.95</p>
+		  <button class="add-to-cart">Add to Cart</button>
+		</div>
+	  
+	    <!-- External Hard Disk Drives -->
+	    <div class="product-tile" 
+	         data-category="xhdd" 
+	         data-type="xhdd-250gb"
+             data-brand="Seagate"		   
+	         data-name="250GB Freeagent Go 2.5&quot; Portable USB 2.0 Hard Drive"
+	         data-price="104.95">
+	      <h3>Seagate 250GB Freeagent Go 2.5&quot; Portable USB 2.0 Hard Drive</h3>
+		  <p>$104.95</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+	  
+	    <div class="product-tile" 
+	         data-category="xhdd" 
+	         data-type="xhdd-500gb"
+             data-brand="UnionSine"			 
+	         data-name="UnionSine 500GB Ultra Slim Portable External Hard Drive"
+	         data-price="30.37">
+	      <h3>UnionSine 500GB Ultra Slim Portable External Hard Drive</h3>
+		  <p>$30.37</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+	  
+	    <div class="product-tile" 
+	         data-category="xhdd" 
+		     data-type="xhdd-1tb"
+             data-brand="Seagate"			 
+		     data-name="Seagate Portable 1TB External Hard Drive"
+		     data-price="109.99">
+	      <h3>Seagate Portable 1TB External Hard Drive</h3>
+		  <p>$109.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+	  
+	    <div class="product-tile" 
+	         data-category="xhdd" 
+		     data-type="xhdd-2tb"
+             data-brand="Seagate"			 
+		     data-name="Seagate Portable 2TB External Hard Drive"
+		     data-price="127.26">
+	      <h3>Seagate Portable 2TB External Hard Drive</h3>
+		  <p>$127.26</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+	  
+	    <div class="product-tile" 
+	         data-category="xhdd" 
+	         data-type="xhdd-3tb"
+             data-brand="Western Digital"			 
+	         data-name="WD 3TB Red My Passport Portable External Hard Drive"
+	         data-price="219.90">
+	      <h3>WD 3TB Red My Passport Portable External Hard Drive</h3>
+		  <p>$219.90</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+	  
+	    <div class="product-tile" 
+	         data-category="xhdd" 
+	         data-type="xhdd-4tbplus"
+             data-brand="Western Digital"			 
+	         data-name="WD 4TB Elements Portable External Hard Drive"
+	         data-price="239.99">
+	      <h3>WD 4TB Elements Portable External Hard Drive</h3>
+		  <p>$239.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+		
+		<!-- Internal Hard Disk Drives -->
+		<div class="product-tile"
+		     data-category="inthdd"
+			 data-type="inthdd-250gb"
+			 data-brand="Seagate"
+			 data-name="Seagate Barracuda ST3250620A 7200.10 250 GB IDE Hard Drive"
+			 data-price="119.95">
+		  <h3>Seagate Barracuda ST3250620A 7200.10 250 GB IDE Internal Hard Drive</h3>
+		  <p>$119.95</p>
+		  <button class="add-to-cart">Add to Cart</button>
+		</div>
+		
+		<div class="product-tile"
+		     data-category="inthdd"
+			 data-type="inthdd-500gb"
+			 data-brand="Samsung"
+			 data-name="Samsung HD502HJ 3.5&quot; 500GB SATA HDD"
+			 data-price="177.68"
+			 data-image="images/hdd.jpg">
+		  <h3>Samsung HD502HJ 3.5&quot; 500GB SATA HDD</h3>
+		  <p>$177.68</p>
+		  <button class="add-to-cart">Add to Cart</button>
+		</div>
+	  
+	    <!-- External Solid State Drives -->
+	    <div class="product-tile" 
+	         data-category="xssd" 
+	         data-type="xssd-250gb"
+             data-brand="SSK"			 
+	         data-name="SSK Portable SSD 250GB External Solid State Drive"
+	         data-price="50.14">
+	      <h3>SSK Portable SSD 250GB External Solid State Drive</h3>
+		  <p>$50.14</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+	  
+	    <div class="product-tile" 
+	         data-category="xssd" 
+		     data-type="xssd-500gb"
+             data-brand="Seagate"			 
+		     data-name="Seagate One Touch SSD 500GB External Solid State Drive Portable"
+		     data-price="140.00">
+	      <h3>Seagate One Touch SSD 500GB External Solid State Drive Portable</h3>
+		  <p>$140.00</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+	  
+	    <div class="product-tile" 
+	         data-category="xssd" 
+		     data-type="xssd-1tb"
+             data-brand="Seagate"			 
+		     data-name="Seagate One Touch SSD 1TB External SSD Portable"
+		     data-price="158.99">
+	      <h3>Seagate One Touch SSD 1TB External SSD Portable</h3>
+		  <p>$158.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+	  
+	    <div class="product-tile" 
+	         data-category="xssd" 
+		     data-type="xssd-2tb"
+             data-brand="SANDISK"			 
+		     data-name="SANDISK 2TB Portable SSD"
+		     data-price="232.99">
+	      <h3>SANDISK 2TB Portable SSD</h3>
+		  <p>$232.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+	  
+	    <div class="product-tile" 
+	         data-category="xssd" 
+		     data-type="xssd-4tbplus"
+             data-brand="Crucial"			 
+		     data-name="Crucial X9 4TB Portable SSD"
+		     data-price="377.55">
+	      <h3>Crucial X9 4TB Portable SSD</h3>
+		  <p>$377.55</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+		
+		<!-- Internal Solid State Drives -->
+        <div class="product-tile"
+             data-category="intssd"
+             data-type="intssd-250gb"
+             data-brand="Samsung"
+             data-name="Samsung 870 EVO SATA 2.5&quot; 250GB SSD"
+             data-price="170.12"
+             data-image="images/samsung-870-250gb.jpg">
+          <h3>Samsung 870 EVO SATA 2.5&quot; 250GB SSD</h3>
+          <p>$170.12</p>
+          <button class="add-to-cart">Add to Cart</button>
+        </div>		  
+
+        <!-- DDR5 RAM -->
+        <div class="product-tile" 
+	         data-category="ram" 
+		     data-type="ram-ddr5"
+             data-brand="Crucial"			 
+		     data-name="Crucial Pro DDR5-6000 CL36"
+		     data-price="90.00">  
+          <h3>Crucial Pro DDR5-6000 CL36 RAM</h3>		
+          <p>$90.00</p>
+		  <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <div class="product-tile" 
+	         data-category="ram" 
+		     data-type="ram-ddr5"
+             data-brand="G Skill"			 
+		     data-name="G Skill Trident Z5 RGB DDR5-6000 CL36"
+		     data-price="504.50"> 
+          <h3>G Skill Trident Z5 RGB DDR5-6000 CL36 RAM</h3>	
+          <p>$504.50</p>
+		  <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <div class="product-tile" 
+	         data-category="ram" 
+		     data-type="ram-ddr5"
+             data-brand="Corsair"			 
+		     data-name="Corsair Vengeance RGB DDR5-6000"
+		     data-price="444.99">  
+          <h3>Corsair Vengeance RGB DDR5-6000 RAM</h3>		
+          <p>$444.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <div class="product-tile" 
+	         data-category="ram" 
+		     data-type="ram-ddr5"
+             data-brand="Kingston"			 
+		     data-name="Kingston Fury Beast DDR5-6000 CL30"
+		     data-price="190.00">  
+          <h3>Kingston Fury Beast DDR5-6000 CL30 RAM</h3>		
+          <p>$190.00</p>
+		  <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <div class="product-tile" 
+	         data-category="ram" 
+		     data-type="ram-ddr5"
+             data-brand="Corsair"			 
+		     data-name="Corsair DDR5-6400"
+		     data-price="900.00">
+          <h3>Corsair DDR5-6400 RAM</h3>
+          <p>$900.00</p>
+		  <button class="add-to-cart">Add to Cart</button>
+        </div>
+  
+        <!-- DDR4 RAM -->
+        <div class="product-tile" 
+	         data-category="ram" 
+		     data-type="ram-ddr4"
+             data-brand="Corsair"			 
+		     data-name="Corsair Vengeance LPX DDR4-3200 CL16"
+		     data-price="95.00">
+          <h3>Corsair Vengeance LPX DDR4-3200 CL16</h3>
+          <p>$95.00</p>
+		  <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+	    <div class="product-tile" 
+	         data-category="ram" 
+		     data-type="ram-ddr4"
+             data-brand="G Skill"			 
+		     data-name="G Skill Trident Z5 DDR4-3600 CL16"
+		     data-price="105.00">  
+          <h3>G Skill Trident Z5 DDR4-3600 CL16</h3>
+	      <p>$105.00</p>
+		  <button class="add-to-cart">Add to Cart</button>
+        </div>
+
+        <div class="product-tile" 
+	         data-category="ram" 
+		     data-type="ram-ddr4"
+             data-brand="Silicon Power"			 
+		     data-name="Silicon Power Gaming DDR4-3200 CL16"
+		     data-price="80.00">  
+          <h3>Silicon Power Gaming DDR4-3200 CL16</h3>
+          <p>$80.00</p>
+		  <button class="add-to-cart">Add to Cart</button>
+        </div>
+  
+        <!-- GPU -->
+        <div class="product-tile" 
+	         data-category="gpu" 
+		     data-type="gpu-nvidia"
+             data-brand="NVIDIA"			 
+			 data-name="GeForce RTX 4070"
+		     data-price="1195.00">
+	      <h3>NVIDIA GeForce RTX 4070</h3>
+	      <p>$1195.00</p>
+		  <button class="add-to-cart">Add to Cart</button>
+        </div>
+	  
+	    <div class="product-tile" 
+	         data-category="gpu" 
+		     data-type="gpu-nvidia"
+             data-brand="NVIDIA"			 
+		     data-name="GeForce RTX 3090"
+		     data-price="2049.00">
+		  <h3>NVIDIA GeForce RTX 3090</h3>
+		  <p>$2049.00</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+  
+        <div class="product-tile" 
+	         data-category="gpu" 
+		     data-type="gpu-amd"
+             data-brand="AMD"			 
+		     data-name="Radeon RX 7800 XT"
+		     data-price="599.99"
+			 data-image="images/amd-radeon-7800xt.jpg">
+	      <h3>AMD Radeon RX 7800 XT</h3>
+	      <p>$599.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+        </div>
+	  
+	    <div class="product-tile" 
+	         data-category="gpu" 
+		     data-type="gpu-amd"
+             data-brand="AMD"			 
+		     data-name="Radeon Pro W6800"
+		     data-price="2590.00"
+			 data-image="images/amd-radeon-pro-w6800.jpg">
+		  <h3>AMD Radeon Pro W6800</h3>
+		  <p>$2590.00</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+	  
+	    <div class="product-tile" 
+	         data-category="gpu" 
+		     data-type="gpu-asus"
+             data-brand="ASUS"			 
+		     data-name="ROG Astral GeForce RTX 5080"
+		     data-price="1843.99">
+		  <h3>ASUS ROG Astral GeForce RTX 5080</h3>
+		  <p>$1843.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+		
+		<div class="product-tile"
+		     data-category="gpu"
+			 data-type="gpu-asus"
+			 data-brand="ASUS"
+			 data-name="NVIDIA GeForce RTX 5060"
+			 data-price="340.99">
+		  <h3>ASUS NVIDIA GeForce RTX 5060</h3>
+		  <p>$340.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+		</div>
+		
+		<div class="product-tile"
+		     data-category="gpu"
+			 data-type="gpu-asus"
+			 data-brand="ASUS"
+			 data-name="NVIDIA GeForce RTX 5070"
+			 data-price="641.99">
+		  <h3>ASUS NVIDIA GeForce RTX 5070</h3>
+		  <p>$641.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+		</div>
+			 
+	    <div class="product-tile" 
+	         data-category="gpu" 
+		     data-type="gpu-intel"
+             data-brand="Intel"			 
+		     data-name="Arc B570 Challenger"
+		     data-price="259.99">
+		  <h3>Intel Arc B570 Challenger</h3>
+		  <p>$259.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+		
+		<div class="product-tile"
+		     data-category="gpu"
+			 data-type="gpu-gigabyte"
+			 data-brand="GIGABYTE"
+			 data-name="GeForce RTX 3050"
+			 data-price="209.99">
+		  <h3>GIGABYTE GeForce RTX 3050</h3>
+		  <p>$209.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+		</div>
+		
+		<div class="product-tile"
+		     data-category="gpu"
+			 data-type="gpu-gigabyte"
+			 data-brand="GIGABYTE"
+			 data-name="Radeon RX 9060XT"
+			 data-price="469.99">
+		  <h3>GIGABYTE Radeon RX 9060XT</h3>
+		  <p>$469.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+		</div>
+  
+        <!-- CPU -->
+        <div class="product-tile" 
+	         data-category="cpu" 
+		     data-type="cpu-amd"
+             data-brand="AMD"			 
+		     data-name="Ryzen 7 7800X3D"
+		     data-price="449.00">
+	      <h3>AMD Ryzen 7 7800X3D</h3>
+	      <p>$449.00</p>
+		  <button class="add-to-cart">Add to Cart</button>
+        </div>
+	  
+	    <div class="product-tile" 
+	         data-category="cpu" 
+		     data-type="cpu-intel"
+             data-brand="Intel"			 
+		     data-name="Core Ultra 9"
+		     data-price="549.99">
+		  <h3>Intel Core Ultra 9</h3>
+		  <p>$549.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+  
+        <!-- Motherboards -->
+        <div class="product-tile" 
+	         data-category="motherboard" 
+		     data-type="mb-B650-E"
+             data-brand="ASUS"			 
+		     data-name="ASUS ROG Strix B650-E Gaming Motherboard"
+		     data-price="299.99">
+	      <h3>ASUS ROG Strix B650-E Gaming</h3>
+	      <p>$299.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+        </div>
+  
+        <div class="product-tile" 
+	         data-category="motherboard" 
+		     data-type="mb-Z790"
+             data-brand="MSI"			 
+		     data-name="MSI Z790 Tomahawk WiFi Motherboard"
+		     data-price="209.99">
+          <h3>MSI Z790 Tomahawk WiFi</h3>
+          <p>$209.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+        </div>
+	  
+	    <div class="product-tile" 
+	         data-category="motherboard" 
+		     data-type="mb-AORUS"
+             data-brand="GIGABYTE"			 
+		     data-name="GIGABYTE Z790 AORUS Elite AX LGA 1700 ATX Motherboard"
+		     data-price="199.99">
+	      <h3>GIGABYTE Z790 AORUS Elite AX LGA 1700 ATX</h3>
+		  <p>$199.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+	  
+	    <div class="product-tile" 
+	         data-category="motherboard" 
+		     data-type="mb-P55"
+             data-brand="EVGA"			 
+		     data-name="EVGA P55 Micro SLI Mainboard 121-LF-E652-KR Motherboard"
+		     data-price="164.33">
+	      <h3>EVGA P55 Micro SLI Mainboard 121-LF-E652-KR</h3>
+		  <p>$164.33</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	    </div>
+		
+		<div class="product-tile"
+		     data-category="motherboard"
+			 data-type="mb-b760m"
+			 data-brand="ASUS"
+			 data-name="ASUS B760M-AYW WiFi D4 II Intel B760 (LGA 1700) microATX mATX Motherboard"
+			 data-price="119.99">
+		  <h3>ASUS B760M-AYW WiFi D4 II Intel B760 (LGA 1700) microATX mATX Motherboard</h3>
+		  <p>$119.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+	  	    
+        <!-- PSU -->
+		<div class="product-tile"
+		     data-category="psu"
+			 data-type="power-supply-k1"
+			 data-brand="EVGA"
+			 data-name="EVGA 100-BR-0450-K1 450 BR 450W PSU"
+			 data-price="139.99"
+			 data-image="images/evga-450w.jpg">
+		  <h3>EVGA 100-BR-0450-K1 450 BR 450W PSU</h3>
+		  <p>$139.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+		</div>
+		
+        <div class="product-tile" 
+	         data-category="psu" 
+		     data-type="power-supply-rm850"
+             data-brand="Corsair"			 
+		     data-name="Corsair RM850x 850W PSU"
+		     data-price="159.99">
+	      <h3>Corsair RM850x 850W PSU</h3>
+	      <p>$159.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+        </div>
+  
+        <!-- NIC -->  
+        <div class="product-tile" 
+	         data-category="nic" 
+		     data-type="nic"
+             data-brand="Intel"			 
+		     data-name="Intel I225-V 2.5GbE NIC"
+		     data-price="49.99">
+	      <h3>Intel I225-V 2.5GbE NIC</h3>
+	      <p>$49.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+        </div>
+		
+		<div class="product-tile"
+		     data-category="nic"
+			 data-type="nic"
+			 data-brand="ASUS"
+			 data-name="ASUS XG-C100C 10G Network Adapter PCI-E x4 Card"
+			 data-price="97.99"
+			 data-image="images/asus-c100c.jpg">
+		  <h3>ASUS XG-C100C 10G Network Adapter PCI-E x4 Card</h3>
+		  <p>$97.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+		</div>
+	  
+	    <!-- CASES -->
+	    <div class="product-tile" 
+	         data-category="cases" 
+		     data-type="case-7"
+             data-brand="ANSAITE"			 
+		     data-name="PC CASE 7 PWM ARGB Fans Pre-Installed"
+		     data-price="75.99">
+	      <h3>ANSAITE PC CASE 7 PWM ARGB Fans Pre-Installed</h3>
+	      <p>$75.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+        </div>
+		
+		<div class="product-tile"
+		     data-category="cases"
+			 data-type="case-"
+			 data-brand="Corsair"
+			 data-name="4000D RS ARGB Frame Modular Mid-Tower ATX PC Case"
+			 data-price="124.99"
+			 data-image="images/corsair-4000d.jpg">
+		  <h3>Corsair 4000D RS ARGB Frame Modular Mid-Tower ATX PC Case</h3>
+		  <p>$124.99</p>
+		  <button class="add-to-cart">Add to Cart</button>
+		</div>
+
+      </div>
+
+    </div>
+
+    <!-- CART SIDEBAR -->
+    <div id="cart-sidebar" class="cart-sidebar">
+	
+      <h2>Your Cart</h2>
+	  
+      <div id="cart-items"></div>
+
+	  <div class="shipping-options">
+	    <h3>Shipping Options</h3>
+		
+		<label>
+		  <input type="radio" name="shipping" value="9.99">
+		  Standard (5-7 business days) - $9.99
+		</label><br>
+		
+		<label>
+		  <input type="radio" name="shipping" value="19.99">
+		  Express (2-3 business days) - $19.99
+		</label><br>
+		
+
+	  </div>
+	  
+	  <div id="cart-total" class="cart-total"></div>
+	  
+	  <div id="customer-info" class="customer-info">
+	    <h3>Customer Info</h3>
+		
+		<label>Country
+	      <select id="cust-country">
+	        <option value="">Select Country</option>
+		    <option value="USA">USA</option>
+		    <option value="Canada">Canada</option>
+		    <option value="UK">United Kingdom</option>
+		    <option value="Mexico">Mexico</option>
+			<option value="Australia">Australia</option>
+		    <option value="Germany">Germany</option>
+	      </select>
+		</label>
+	  
+	    <label>State
+	      <input id="cust-state" placeholder="State">
+		</label>
+		
+		<label>City
+	      <input id="cust-city" placeholder="City">
+		</label>
+		
+		<label>ZIP Code
+	      <input id="cust-zip" placeholder="ZIP">
+		</label>
+	  
+	    <label>Age Group
+	      <select id="cust-age">
+	        <option value="">Age</option>
+		    <option value="18-24">18-24</option>
+		    <option value="25-34">25-34</option>
+		    <option value="35-44">35-44</option>
+		    <option value="45-54">45-54</option>
+		    <option value="55+">55+</option>
+	      </select>
+		</label>
+	  
+	    <label>Gender
+	      <select id="cust-gender">
+	        <option value="">Gender</option>
+		    <option value="male">Male</option>
+		    <option value="female">Female</option>
+		    <option value="other">Other</option>
+	      </select>
+		</label>
+		
+
+	  </div>
+	  
+	  <div class="cart-actions">
+	    <button id="checkout" class="checkout">Checkout</button>
+	    <button id="download-sales-json" class="download">Download Sales Data (JSON)</button>
+	    <button id="download-sales-csv" class="download">Download Sales Data (CSV)</button>
+        <button id="clear-cart-info" class="clear-all-btn">Clear Cart & Customer Info</button>
+		<button id="close-cart" class="close-cart">Close</button>
+      </div>
+	
+	</div>
+	
+</body>
+</html>

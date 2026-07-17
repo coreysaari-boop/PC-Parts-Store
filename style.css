@@ -1,0 +1,45 @@
+body {
+  background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+}
+.outside-header {
+  color: orange;
+  text-align: center;
+}
+.product {
+  background-color: white;
+  padding: 20px;
+  margin: 20px;
+  border: 5px solid #ccc;
+}
+.categories {
+  border: 5px solid #ccc;
+  width: 20%;
+}
+ul {
+  list-style-type: none;
+  align-items: left;
+
+}
+.categories h1 {
+  margin-left: 5px;
+}
+.RAM {
+  height: 300px;
+  border: 5px solid #ccc;
+  margin: 5px;
+  width: 25%;
+}
+.RAM h3 {
+  text-align: center;
+}
+.RAM img {
+  display: block;
+  margin: auto;
+  width: 125px;
+  height: 125px;
+  
+}
+.RAM p {
+  text-align: center;
+}
